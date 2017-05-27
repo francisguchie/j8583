@@ -1,7 +1,7 @@
 apply plugin:'java'
 apply plugin: 'maven'
 defaultTasks 'build'
-version='1.13.0'
+version='1.14.0-SNAPSHOT'
 description='Java implementation of the ISO 8583 protocol, focused on making the creation, edition and reading of ISO8583 messages as simple and flexible as possible.'
 sourceCompatibility=7
 targetCompatibility=7
@@ -40,7 +40,7 @@ tasks.withType(AbstractCompile) { AbstractCompile compile ->
 }
 
 artifacts {
-	archives javadocJar
+	//archives javadocJar  // Comment out due to build errors.
 	archives sourcesJar
 }
 
@@ -56,9 +56,12 @@ uploadArchives {
 			beforeDeployment { MavenDeployment deployment ->
 				signing.signPom(deployment)
 			}
-			repository(url:'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
-				authentication(userName:nexusUsername, password:nexusPassword)
+			//repository(url:'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
+			//	authentication(userName:nexusUsername, password:nexusPassword)
+			// Publish to local maven repo.
+			repository(url:'file://localhost/Users/mll/.m2/repository') {
 			}
+			pom.artifactId='j8583'
 			pom.project {
 				name 'j8583'
 				packaging 'jar'

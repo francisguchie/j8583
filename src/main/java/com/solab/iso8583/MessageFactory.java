@@ -466,6 +466,7 @@ public class MessageFactory<T extends IsoMessage> {
 						if (val != null) {
 							if (val.getType() == IsoType.NUMERIC || val.getType() == IsoType.DATE10
 									|| val.getType() == IsoType.DATE4
+									|| val.getType() == IsoType.DATE6
 									|| val.getType() == IsoType.DATE12
 									|| val.getType() == IsoType.DATE14
 									|| val.getType() == IsoType.DATE_EXP

@@ -141,7 +141,7 @@ public enum IsoType {
 	        System.arraycopy(x, 0, c, lim, x.length);
 	        return new String(c);
 		} else if (this == AMOUNT) {
-			return IsoType.NUMERIC.format(new BigDecimal(value).movePointRight(2).longValue(), 12);
+			return IsoType.NUMERIC.format(new BigDecimal(value).longValue(), 12);
 		} else if (this == BINARY) {
 
 	    	if (value == null) {
@@ -191,7 +191,7 @@ public enum IsoType {
 	/** Formats the BigDecimal as an AMOUNT, NUMERIC, or a String. */
 	public String format(BigDecimal value, int length) {
 		if (this == AMOUNT) {
-			return String.format("%012d", value.movePointRight(2).longValue());
+			return String.format("%012d", value.longValue());
 		} else if (this == NUMERIC) {
 			return format(value.longValue(), length);
 		} else if (this == ALPHA || this == LLVAR || this == LLLVAR || this == LLLLVAR) {

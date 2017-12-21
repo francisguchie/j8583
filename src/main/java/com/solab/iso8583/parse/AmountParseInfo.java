@@ -51,7 +51,7 @@ public class AmountParseInfo extends FieldParseInfo {
 		}
 		String c = new String(buf, pos, 12, getCharacterEncoding());
 		try {
-			return new IsoValue<>(type, new BigDecimal(c).movePointLeft(2));
+			return new IsoValue<>(type, new BigDecimal(c));
 		} catch (NumberFormatException ex) {
 			throw new ParseException(String.format("Cannot read amount '%s' field %d pos %d",
                     c, field, pos), pos);
